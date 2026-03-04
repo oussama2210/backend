@@ -7,11 +7,17 @@ const router = Router();
 // GET /api/listings — all listings (with optional filters: type, city)
 router.get('/', async (req, res, next) => {
     try {
-        const { type, city, page = 1, limit = 20 } = req.query;
+        const { type, city, search, page = 1, limit = 20 } = req.query;
 
         const where = { isActive: true };
         if (type) where.type = type;
         if (city) where.city = { contains: city, mode: 'insensitive' };
+        if (search) {
+            where.OR = [
+                { title: { contains: search, mode: 'insensitive' } },
+                { city: { contains: search, mode: 'insensitive' } }
+            ];
+        }
 
         const skip = (Number(page) - 1) * Number(limit);
 
