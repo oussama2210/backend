@@ -5,7 +5,7 @@
         "buildCommand": "npm install && npx prisma generate"
     },
     "deploy": {
-        "startCommand": "npm run start",
+        "startCommand": "npm run dev",
         "healthcheckPath": "/api/health",
         "healthcheckTimeout": 100,
         "restartPolicyType": "ON_FAILURE"

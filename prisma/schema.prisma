@@ -97,9 +97,13 @@ enum ListingType {
   hotel
   resort
   land
+  villa
+  apartment
 }
 
 enum PriceType {
   per_day
   per_night
+  monthly
+  sale
 }
